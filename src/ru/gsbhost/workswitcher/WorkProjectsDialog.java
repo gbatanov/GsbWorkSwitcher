@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import org.netbeans.api.project.Project;
 import org.netbeans.api.project.ui.OpenProjects;
+import org.openide.filesystems.FileObject;
 
 /**
  *
@@ -38,9 +39,16 @@ public class WorkProjectsDialog extends javax.swing.JDialog {
 
         index = -1;
         setTitle(org.openide.util.NbBundle.getMessage(WorkProjectsDialog.class, "WorkProjectsDialog.title")); // NOI18N
+
+        /*
+        project is not exists yet in this point!
         Project[] projects = OpenProjects.getDefault().getOpenProjects();
-        // TODO: use a project's directory
-        ImageIcon im = new ImageIcon("C:\\work\\WorkSwitcher\\src\\ru\\gsbhost\\workswitcher\\gsb.png");
+        FileObject projectDir = projects[0].getProjectDirectory();
+        String cd = projectDir.getPath();
+        System.out.println(cd);
+         */
+
+        ImageIcon im = new ImageIcon("C:\\work\\nb_gsb.png");
         setIconImage(im.getImage());
 
         buttonGroup1 = new javax.swing.ButtonGroup();
@@ -48,11 +56,8 @@ public class WorkProjectsDialog extends javax.swing.JDialog {
         for (int i = 0; i < listWithFile.size(); ++i) {
             javax.swing.JRadioButton rbButton = new javax.swing.JRadioButton();
             org.openide.awt.Mnemonics.setLocalizedText(rbButton, listWithFile.get(i).getName().replace("switch_project_", "").replace(".bat", "")); // NOI18N
-            rbButton.addActionListener(new java.awt.event.ActionListener() {
-                @Override
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    rbButtonActionPerformed(evt);
-                }
+            rbButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+                rbButtonActionPerformed(evt);
             });
 
             rbList.add(rbButton);
@@ -63,31 +68,9 @@ public class WorkProjectsDialog extends javax.swing.JDialog {
 
         btSelect = new javax.swing.JButton();
         org.openide.awt.Mnemonics.setLocalizedText(btSelect, org.openide.util.NbBundle.getMessage(WorkProjectsDialog.class, "WorkProjectsDialog.btSelect.text")); // NOI18N
-        btSelect.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSelectActionPerformed(evt);
-            }
+        btSelect.addActionListener((java.awt.event.ActionEvent evt) -> {
+            btSelectActionPerformed(evt);
         });
-        /*
-		btDebug = new javax.swing.JButton();
-		org.openide.awt.Mnemonics.setLocalizedText(btDebug, org.openide.util.NbBundle.getMessage(WorkProjectsDialog.class, "WorkProjectsDialog.btDebug.text")); // NOI18N
-		btDebug.addActionListener(new java.awt.event.ActionListener() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btDebugActionPerformed(evt);
-			}
-		});
-
-		btJob = new javax.swing.JButton();
-		org.openide.awt.Mnemonics.setLocalizedText(btJob, org.openide.util.NbBundle.getMessage(WorkProjectsDialog.class, "WorkProjectsDialog.btJob.text")); // NOI18N
-		btJob.addActionListener(new java.awt.event.ActionListener() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btJobActionPerformed(evt);
-			}
-		});
-         */
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
 
@@ -100,12 +83,8 @@ public class WorkProjectsDialog extends javax.swing.JDialog {
             gph.addGroup(sgh);
         }
 
-        GroupLayout.SequentialGroup sgbh = layout.createSequentialGroup().addGap(16, 16, 16)// Отжимает группу кнопок слева
+        GroupLayout.SequentialGroup sgbh = layout.createSequentialGroup().addGap(16, 16, 16)// a gap of buttons group at left
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        //						.addGroup(layout.createSequentialGroup()
-                        //								.addComponent(btDebug)
-                        //								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        //								.addComponent(btJob))
                         .addComponent(btSelect))
                 .addContainerGap(215, Short.MAX_VALUE);
 
@@ -126,9 +105,6 @@ public class WorkProjectsDialog extends javax.swing.JDialog {
                 .addContainerGap(GapButton, Short.MAX_VALUE) // Отжимает кнопки от радиобаттонов
                 .addComponent(btSelect)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                //				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                //						.addComponent(btDebug)
-                //						.addComponent(btJob))
                 .addGap(18, 18, 18);// Отжимает группу кнопок снизу
 
         gpv.addGroup(sgbv);
@@ -153,31 +129,6 @@ public class WorkProjectsDialog extends javax.swing.JDialog {
         }
     }
 
-    /*
-	private void btDebugActionPerformed(java.awt.event.ActionEvent evt) {
-		System.out.println("with Debug");
-		if (index < 0) {
-			System.out.println("index -1");
-		} else {
-			System.out.println(Switcher.listWithFileNames.get(index));
-			dialog.setVisible(false);
-			Switcher.switchProject(index, 1);
-		}
-
-	}
-
-	private void btJobActionPerformed(java.awt.event.ActionEvent evt) {
-		System.out.println("with Job");
-		if (index < 0) {
-			System.out.println("index -1");
-		} else {
-			System.out.println(Switcher.listWithFileNames.get(index));
-			dialog.setVisible(false);
-			Switcher.switchProject(index, 2);
-		}
-
-	}
-     */
     /**
      *
      */
