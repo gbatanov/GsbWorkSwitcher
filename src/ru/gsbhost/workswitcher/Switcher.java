@@ -67,47 +67,13 @@ public final class Switcher implements ActionListener {
      * @param debug 0-not change, 1 - with debug mode, 2 - with job mode
      */
     public static void switchProject(int index, int debug) {
-        String line = "";
+
         Project[] projects = OpenProjects.getDefault().getOpenProjects();
         if (projects.length > 0) {
             // Close opened projects
             OpenProjects.getDefault().close(projects);
         }
         try {
-            if (debug > 0) {
-                String pathToIni = "C:/Zend/ZendServer/etc/php.ini";
-                File IniFile = new File(pathToIni);
-                ArrayList<String> lines = new ArrayList<>();
-                int i = 0;
-                int extStringIndex = -1;
-                try (BufferedReader br = new BufferedReader(new FileReader(IniFile))) {
-                    line = br.readLine();
-                    while (line != null) {
-                        if (line.contains("ZendExtensionManager")) {
-                            if (debug == 1) { //debug mode
-                                line = ";" + line;
-                            } else if (debug == 2) {//job mode
-                                line = line.replaceAll("^;+", "");
-                            }
-                            extStringIndex = i;
-                            System.out.println(line);
-                        }
-                        lines.add(line);
-                        line = br.readLine();
-                        i++;
-                    }
-                } catch (IOException ex) {
-                    System.out.println(ex);
-                }
-                try (FileWriter fw = new FileWriter(pathToIni)) {
-                    for (i = 0; i < lines.size(); i++) {
-                        fw.write(lines.get(i));
-                        fw.write("\r\n");
-                    }
-                } catch (IOException ex) {
-                    System.out.println(ex);
-                }
-            }
             String foldername = "C:/work/" + listWithFileNames.get(index);
             foldername = foldername.replace("_Test", "");// Test projects have same folder
             System.out.println(foldername);
