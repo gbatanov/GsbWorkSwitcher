@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 AutoUpdate-Show-In-Client: true
 OpenIDE-Module: ru.gsbhost.workswitcher/1
-OpenIDE-Module-Implementation-Version: 32
+OpenIDE-Module-Implementation-Version: 34
 OpenIDE-Module-Localizing-Bundle: ru/gsbhost/workswitcher/Bundle.properties
 

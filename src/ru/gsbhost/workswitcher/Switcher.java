@@ -26,7 +26,7 @@ import org.openide.filesystems.FileUtil;
         id = "ru.gsbhost.workswitcher.Switcher"
 )
 @ActionRegistration(
-        iconBase = "ru/gsbhost/workswitcher/gsb.png",
+        iconBase = "ru/gsbhost/resources/gsb.png",
         displayName = "#CTL_Switcher"
 )
 @ActionReference(path = "Menu/Tools", position = 1600, separatorAfter = 1625)

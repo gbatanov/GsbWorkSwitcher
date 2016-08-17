@@ -47,8 +47,10 @@ public class WorkProjectsDialog extends javax.swing.JDialog {
         String cd = projectDir.getPath();
         System.out.println(cd);
          */
+//setIconImage(new javax.swing.ImageIcon(getClass().getResource("/ru/gsbhost/resources/gsb.png"))); // NOI18N
 
-        ImageIcon im = new ImageIcon("C:\\work\\nb_gsb.png");
+        ImageIcon im = new javax.swing.ImageIcon(getClass().getResource("/ru/gsbhost/resources/gsb.png"));
+//        ImageIcon im = new ImageIcon("C:\\work\\nb_gsb.png");
         setIconImage(im.getImage());
 
         buttonGroup1 = new javax.swing.ButtonGroup();
