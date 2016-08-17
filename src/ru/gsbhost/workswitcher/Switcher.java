@@ -1,6 +1,6 @@
 /*
  * 
- *  $Id: Switcher.java 847 2015-06-24 09:33:07Z gsb $
+ *  $Id: Switcher.java 847 2016-08-17 09:33:07Z gsb $
  */
 package ru.gsbhost.workswitcher;
 
